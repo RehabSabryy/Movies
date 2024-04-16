@@ -1,27 +1,54 @@
-import React, { useEffect , useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import MediaItem from '../MediaItem/MediaItem';
+import { Helmet } from 'react-helmet';
+
 export default function Home() {
-    let [trendingMovies , setMovies] = useState([]);
-    async function getMovies() {
-        let {data} = await axios.get("https://api.themoviedb.org/3/movie/popular?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US");
-        console.log(data);
-        setMovies(data.results);
+    const [trendingMovies, setMovies] = useState([]);
+    const [trendingPeople, setPeople] = useState([]);
+
+    async function getTrendingMedia(mediaType, callback) {
+        try {
+            const { data } = await axios.get(`https://api.themoviedb.org/3/trending/${mediaType}/week?api_key=0571b3897a59a86549eb721a218f5f26`);
+            callback(data.results);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     }
+
     useEffect(() => {
-        getMovies();
-    },[]);
-  return (
-    <>
-       <div className='row my-5'>
-        {trendingMovies.length>0 ? trendingMovies.map((movie, index)=><div key={index} className='col-md-3'>
-          <div className="movie">
-          <img className="w-100" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
-            <h6>{movie.title}</h6>
-            <p>{movie.overview}</p>
-          </div>
-        </div>):<i className='fas fa-spinner fa-spin fa-4x'></i>}
+        getTrendingMedia('movie', setMovies);
+        getTrendingMedia('person', setPeople);
+    }, []);
+
+    return (
+      <>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Trending</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-4 mt-5">
+                    <div className="border w-25 mb-5 mt-5"></div>
+                    <h2 className='h3'>Trending Movies<br />To Watch Right Now</h2>
+                    <p className='text-secondary'>Most Watched Movies</p>
+                    <div className="border w-100 mt-5"></div>
+                </div>
+                {trendingMovies.map((item, index) => <MediaItem key={index} item={item} />)}
+            </div>
+
+            <div className="row">
+                <div className="col-md-4 mt-5">
+                    <div className="border w-25 mb-5 mt-5"></div>
+                    <h2 className='h3'>Trending Actors<br />To Watch Right Now</h2>
+                    <p  className='text-secondary'>Most Watched Actors</p>
+                    <div className="border w-100 mt-5"></div>
+                </div>
+                {trendingPeople.map((item, index) => <MediaItem key={index} item={item} />)}
+            </div>
         </div>
-       
         </>
-        )
+    );
 }

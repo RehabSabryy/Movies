@@ -8,8 +8,10 @@ import People from './Components/People/People';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import Profile from './Components/Profile/Profile';
+import ItemDetails from './Components/ItemDetails/ItemDetails';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './Components/Home/Home';
+import { Offline, Online } from 'react-detect-offline';
 
 function App() {
   let routers = createBrowserRouter([
@@ -21,10 +23,15 @@ function App() {
       {path:'login' , element:<Login/>} ,
       {path:'register' , element:<Register/>},
       {path:'profile' , element:<Profile/>},
+      {path:'itemdetails/:id/:media_type' , element:<ItemDetails/>},
       {path:'*' , element:<NotFound/>}    
     ]}
   ]);
-  return ( <RouterProvider router={routers}/>
+  return (
+    <>
+    <Offline><div className="offline">You're Offline</div></Offline>
+   <RouterProvider router={routers}/>
+   </> 
   );
 }
 

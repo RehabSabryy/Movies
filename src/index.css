@@ -18,3 +18,37 @@ a {
   border: 1px solid #a8a8a83d;
   color: var(--font-color);
 }
+.border {
+  height: 1px;
+  background-color: #a8a8a83d;
+}
+.vote {
+  padding: 5px;
+  background-color: #24baef;
+  color: white;
+}
+.offline {
+  background-color: var(--bg-color);
+  box-shadow: 10px 10px 10px  #ccc;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  position: fixed;
+  left: 50px;
+  bottom: 50px;
+  z-index: 99999;
+}
+.container {
+  margin-top: 50px;
+}
+
+.profile-info {
+  background-color:  #a8a8a83d;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info p {
+  margin-bottom: 10px;
+}

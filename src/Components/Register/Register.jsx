@@ -1,5 +1,6 @@
 import Joi from 'joi';
 import React, { useState , useEffect} from 'react';
+import { Helmet } from 'react-helmet';
 
 export default function Register() {
     const [errorList, setErrorList] = useState([]);
@@ -42,13 +43,18 @@ export default function Register() {
         setTimeout(() => {
         setIsLoading(false);
         // redirect to home page
-        window.location.href = '/home';
+        window.location.href = '/';
        }, 2000);
        }
    
      }
   return (
     <>
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>Register</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
     <form onSubmit={submitRegisterForm} className="mx-auto my-5">
             <h1 className="text-center">Register</h1>
         <div>

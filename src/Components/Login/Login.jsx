@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Joi from 'joi';
+import { Helmet } from 'react-helmet';
 
 export default function Login() {
   const [errorList, setErrorList] = useState([]);
@@ -54,6 +55,11 @@ export default function Login() {
    }
 return (
   <>
+    <Helmet>
+        <meta charSet='utf-8' />
+        <title>Login</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
   <form onSubmit={submitLoginForm} className="mx-auto my-5">
           <h1 className="text-center">Login</h1>
       <div>
