@@ -17,7 +17,7 @@ export default function ItemDetails() {
         <>
           <Helmet>
         <meta charSet='utf-8' />
-        <title>{details.title}</title>
+        <title>{details.title || details.name}</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
         <div className="row mt-5">

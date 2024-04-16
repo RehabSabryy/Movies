@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 export default function Movies({item}) {
   let [trendingMovies , setMovies] = useState([]);
@@ -16,6 +17,11 @@ export default function Movies({item}) {
   },[]);
 return (
   <>
+    <Helmet>
+        <meta charSet='utf-8' />
+        <title>Movies</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
      <div className='row my-5'>
      <h1 className='text-center mb-5 fw-bold text-secondary'>Popular Movies</h1>
 

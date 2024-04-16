@@ -2,6 +2,8 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet';
+
 export default function Tv() {
   let [tvList , setTvList] = useState([]);
   async function tv() {
@@ -14,6 +16,11 @@ export default function Tv() {
   })
   return (
    <>
+     <Helmet>
+        <meta charSet='utf-8' />
+        <title>TV Shows</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
     <div className="row my-5 pb-5 py-3">
       <h1 className='text-center mb-5 fw-bold text-secondary'>Popular Tv Shows</h1>
       {tvList.map((tv, index)=><div key={index} className='col-md-3'>

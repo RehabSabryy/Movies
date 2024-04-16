@@ -2,6 +2,8 @@ import axios from 'axios';
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet';
+
 export default function People() {
   let [actorsList , setActorsList] = useState([]);
   async function actors () {
@@ -14,6 +16,11 @@ export default function People() {
   })
   return (
   <>
+    <Helmet>
+        <meta charSet='utf-8' />
+        <title>Actors</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
     <div className="row my-5 pb-5 py-5">
     <h1 className='text-center mb-5 fw-bold text-secondary'>Popular Actors</h1>
       {actorsList.map((actor, index)=><div key={index} className='col-md-3'>
