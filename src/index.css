@@ -52,3 +52,10 @@ a {
 .profile-info p {
   margin-bottom: 10px;
 }
+.mediaItem {
+  transition: transform 0.4s ease-in-out; 
+}
+
+.mediaItem:hover {
+  transform: scale(1.1); 
+}

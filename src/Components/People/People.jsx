@@ -18,7 +18,7 @@ export default function People() {
     <h1 className='text-center mb-5 fw-bold text-secondary'>Popular Actors</h1>
       {actorsList.map((actor, index)=><div key={index} className='col-md-3'>
         <Link to={`/itemdetails/${actor.id}/person`}>
-        <div className="movie">
+        <div className="movie mediaItem">
           <img className="w-100" src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} alt={actor.name} />
           <h6 className='mt-2 fw-bold text-center mb-5'>{actor.name}</h6>
         </div>

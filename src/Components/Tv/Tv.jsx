@@ -19,7 +19,7 @@ export default function Tv() {
       {tvList.map((tv, index)=><div key={index} className='col-md-3'>
       <Link to={`/itemdetails/${tv.id}/tv`}>
 
-        <div className="movie">
+        <div className="movie mediaItem">
           <img className="w-100" src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`} alt={tv.name} />
           <h6 className='mt-2 fw-bold text-center mb-5'>{tv.name}</h6>
         </div>

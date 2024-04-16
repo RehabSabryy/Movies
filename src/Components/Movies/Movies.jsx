@@ -23,7 +23,7 @@ return (
      {trendingMovies.length > 0 ? trendingMovies.map((movie, index) => (
           <div key={index} className='col-md-3'>
             <Link to={`/itemdetails/${movie.id}/movie`}>
-              <div className="movie">
+              <div className="movie mediaItem">
                 <img className="w-100" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
                 <h6 className='mt-2 fw-bold text-center'>{movie.title}</h6>
                 <p>{movie.overview}</p>
